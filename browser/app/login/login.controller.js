@@ -16,8 +16,7 @@ app.controller('LoginCtrl', function($scope, $state, LoginFactory){
   $scope.logout = function(){
     LoginFactory.logout()
     .then(function(res){
-      console.log('logged out');
-
+      $state.go('login');
     });
   };
 

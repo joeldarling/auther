@@ -5,7 +5,6 @@ app.controller('LoginCtrl', function($scope, $state, LoginFactory){
     LoginFactory.submitLogin($scope.userEmail, $scope.userPassword).
     then(function(res){
       //are we logged in?
-      if(res==='OK')
         $state.go('stories');
     })
     .catch(function(){

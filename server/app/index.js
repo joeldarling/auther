@@ -54,8 +54,8 @@ app.post('/login', function( req, res, next ){
       res.sendStatus(401);
     } else {
       req.session.userId = user._id;
-
-      res.sendStatus(200);
+      console.log('USER', user);
+      res.json(user);
     }
   });
 });
@@ -70,7 +70,7 @@ app.post('/signup', function( req, res, next ){
   newUser.save()
   .then(function(user){
       req.session.userId = user._id;
-      res.sendStatus(200);
+      res.json(user);
   })
   .catch(function(err){
     res.sendStatus(401);
@@ -83,7 +83,7 @@ app.post('/logout', function( req, res, next ){
 
     //cookie has been eaten
     console.log('cookie has been eaten');
-    
+
   });
 
 });

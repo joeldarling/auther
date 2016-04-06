@@ -1,6 +1,8 @@
 <div class="signin-container" ng-controller="LoginCtrl">
 	<div class="buffer local">
 		<form>
+			<div class="panel panel-warning" ng-show="loginError">Invalid Email or Password</div>
+
 			<div class="form-group">
 				<label>email</label>
 				<input type="text" class="form-control" required ng-model="userEmail"/>

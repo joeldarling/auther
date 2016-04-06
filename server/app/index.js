@@ -54,11 +54,28 @@ app.post('/login', function( req, res, next ){
       res.sendStatus(401);
     } else {
       req.session.userId = user._id;
-			console.log('in login', req.session);
 
       res.sendStatus(200);
     }
   });
+});
+
+app.post('/signup', function( req, res, next ){
+
+  var newUser = new User({
+      email: req.body.email,
+      password: req.body.password
+  });
+
+  newUser.save()
+  .then(function(user){
+      req.session.userId = user._id;
+      res.sendStatus(200);
+  })
+  .catch(function(err){
+    res.sendStatus(401);
+  });
+
 });
 
 app.use(require('./error.middleware'));

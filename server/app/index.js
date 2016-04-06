@@ -77,6 +77,16 @@ app.post('/signup', function( req, res, next ){
   });
 
 });
+app.post('/logout', function( req, res, next ){
+
+  req.session.destroy(function(err){
+
+    //cookie has been eaten
+    console.log('cookie has been eaten');
+    
+  });
+
+});
 
 app.use(require('./error.middleware'));
 

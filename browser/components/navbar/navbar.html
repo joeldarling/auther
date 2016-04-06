@@ -14,10 +14,10 @@
 				<li ng-class="{active: pathStartsWithStatePath('users')}"><a ui-sref="users">users</a></li>
 				<li ng-class="{active: pathStartsWithStatePath('stories')}"><a ui-sref="stories">stories</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right" ng-controller="LoginCtrl">
 				<li ui-sref-active="active"><a ui-sref="signup">signup</a></li>
 				<li ui-sref-active="active"><a ui-sref="login">login</a></li>
-				<li><button class="navbar-btn btn btn-default">logout</button></li>
+				<li><button class="navbar-btn btn btn-default" ng-click="logout()">logout</button></li>
 			</ul>
 		</div>
 	</div>

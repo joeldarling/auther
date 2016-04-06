@@ -42,6 +42,20 @@ validFrontendRoutes.forEach(function (stateRoute) {
 });
 
 /// USER LOGIN ROUTE ///
+app.put('/auth/me', function( req, res, next ){
+
+
+  if(!req.session.userId)
+    res.json({});
+  else{
+
+    User.findOne({_id: req.session.userId})
+    .then(function(user){
+      res.json(user);
+    });
+  }
+});
+
 app.post('/login', function( req, res, next ){
 
 
@@ -54,7 +68,6 @@ app.post('/login', function( req, res, next ){
       res.sendStatus(401);
     } else {
       req.session.userId = user._id;
-      console.log('USER', user);
       res.json(user);
     }
   });

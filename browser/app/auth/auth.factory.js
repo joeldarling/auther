@@ -1,8 +1,16 @@
-app.factory('AuthFactory', function(){
+app.factory('AuthFactory', function($http){
 
   var currentUser = {};
 
   return {
+    queryLogin:function(){
+      return $http.put('/auth/me')
+      .then(function(res){
+          currentUser = res.data;
+          return currentUser;
+      });
+
+    },
     setUser: function(user){
       currentUser = user;
     },
